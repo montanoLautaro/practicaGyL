@@ -19,6 +19,8 @@ public class Usuario {
     private String telefono;
     private String correo;
 
+    private Cuenta cuenta;
+
     public Usuario() {
     }
 
