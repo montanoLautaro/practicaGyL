@@ -10,6 +10,7 @@ public class PrincipalServicio {
     private Scanner sc = new Scanner(System.in).useDelimiter("\n");
     private ArrayList<Usuario> usuarios = new ArrayList<>();
 
+
     public void menu(){
         int opcion;
 
@@ -55,6 +56,7 @@ public class PrincipalServicio {
         int num = 0;
         boolean validador = true;
         do{
+
             try{
                 num = sc.nextInt();
                 if(num > 0){

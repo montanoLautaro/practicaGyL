@@ -10,42 +10,14 @@
  */
 package main;
 
+import servicios.PrincipalServicio;
+
 public class main {
     public static void main(String[] args) {
 
+        PrincipalServicio sv = new PrincipalServicio();
+        sv.menu();
 
-
-    }
-
-
-    public static boolean menu(){
-        boolean validacion = true;
-
-        try{
-            pido;
-            opcion1;
-            opcion2;
-            opcion3;
-            scanner;
-            switch(){
-
-            }
-
-
-        }catch(exception a){
-            System.out.println("");
-            validacion = false;
-        }finally {
-            return validacion;
-        }
-    }
-
-    public static void llamarMenu(){
-        boolean validacion;
-
-        do{
-            validacion = menu();
-        }while(menu == false);
     }
 
 
