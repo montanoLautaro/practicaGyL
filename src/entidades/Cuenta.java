@@ -13,10 +13,9 @@
 package entidades;
 
 public class Cuenta {
-    private String contrasenia;
+    private int contrasenia;
     private double saldo;
-
-    private String tarjeta;
+    private String numeroTarjeta;
 
 
 
@@ -24,23 +23,31 @@ public class Cuenta {
         saldo = 0;
     }
 
-    public Cuenta(String contrasenia, String tarjeta) {
-        this.tarjeta = tarjeta;
+    public Cuenta(int contrasenia, String numeroTarjeta) {
+        this.numeroTarjeta = numeroTarjeta;
         this.contrasenia = contrasenia;
         saldo = 0;
     }
 
-    public Cuenta(String contrasenia, double saldo, String tarjeta) {
+    public Cuenta(int contrasenia, double saldo, String numeroTarjeta) {
         this.contrasenia = contrasenia;
         this.saldo = saldo;
-        this.tarjeta = tarjeta;
+        this.numeroTarjeta = numeroTarjeta;
     }
 
-    public String getContrasenia() {
+    public String getNumeroTarjeta() {
+        return numeroTarjeta;
+    }
+
+    public void setNumeroTarjeta(String numeroTarjeta) {
+        this.numeroTarjeta = numeroTarjeta;
+    }
+
+    public int getContrasenia() {
         return contrasenia;
     }
 
-    public void setContrasenia(String contrasenia) {
+    public void setContrasenia(int contrasenia) {
         this.contrasenia = contrasenia;
     }
 

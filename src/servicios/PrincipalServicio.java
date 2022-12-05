@@ -1,33 +1,34 @@
 package servicios;
 
+import entidades.Cuenta;
 import entidades.Usuario;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class PrincipalServicio {
-    private Scanner sc = new Scanner(System.in).useDelimiter("\n");
-    private ArrayList<Usuario> usuarios = new ArrayList<>();
 
+    UsuarioServicio userSv = new UsuarioServicio();
+
+    public ArrayList<Usuario> usuarios = new ArrayList<>();
 
     public void menu(){
         int opcion;
+        inicializarUsuarios();
 
         do{
-            System.out.println("\t\t Menú Principal");
+            System.out.println("\t\t MENÚ PRINCIPAL");
             System.out.println("1. Ingresar un nuevo usuario.");
-            System.out.println("2. Menú de usuario");
+            System.out.println("2. Ingresar a la cuenta");
             System.out.println("3. Salir");
             System.out.println("Elíja una opción: ");
-            opcion = validarIngresoEnteroPositivo();
+            opcion = Validador.validarIngresoEnteroPositivo();
             switch (opcion){
                 case 1:
-                    agregarNuevoUsuario();
+                    userSv.agregarNuevoUsuario(usuarios);
                     break;
                 case 2:
-                    //menuUsuario()
-                    System.out.println("ingresando al menu de usuario...");
+                    System.out.println("Ingresando al menu de usuario...");
+                    userSv.ingresarCuenta(usuarios);
                     break;
                 case 3:
                     System.out.println("SALIENDO DEL PROGRAMA...");
@@ -38,45 +39,19 @@ public class PrincipalServicio {
         }while(opcion != 3);
     }
 
-    public void agregarNuevoUsuario(){
-        UsuarioServicio usuarioSV = new UsuarioServicio();
-        Usuario nuevoUsuario = usuarioSV.crearUsuario();
-        if(nuevoUsuario != null){
-            if(usuarios.size() < 10){
-                System.out.println("creando usuario...");
-                usuarios.add(nuevoUsuario);
-                System.out.println("Se ingresaron " + usuarios.size() + " de 10 usuarios.");
-            }else{
-                System.out.println("Se alcanzó el máximo de usuarios permitido.");
-            }
-        }
+
+    public void inicializarUsuarios(){
+        usuarios.add(new Usuario("Juan", "Pere", 19, "falsa 123", "1133443311", "corre@prueba.com", new Cuenta(1439,
+                130, "1234567891012345")));
+        usuarios.add(new Usuario("Logi", "Tech", 33, "lab 3", "1133221144", "qwerty@prueba.com", new Cuenta(1321,
+                100, "9876543211012345")));
+        usuarios.add(new Usuario("Pan", "Queso", 19, "micro 12", "981231232", "supr@correo.com", new Cuenta(5411,
+                300, "123456789763812")));
+        usuarios.add(new Usuario("pasta", "Salsa", 40, "pastas 33", "1123123122", "charly@correo.com", new Cuenta(2222,
+                1000, "1234567891012345")));
+        usuarios.add(new Usuario("Dobby", "Free", 44, "lejos 1", "13123123123", "cerca@prueba.com", new Cuenta(5123,
+                10, "1234561234562345")));
     }
-
-    public int validarIngresoEnteroPositivo(){
-        int num = 0;
-        boolean validador = true;
-        do{
-
-            try{
-                num = sc.nextInt();
-                if(num > 0){
-                    validador = false;
-                }else{
-                    System.out.println("El número ingresado no es válido, no se permite el ingreso de números negativos.");
-                }
-            }catch(InputMismatchException a){
-                System.out.println(a.getMessage());
-                System.out.println("Solo puede ingresar números enteros, intentelo nuevamente.");
-                sc.nextLine();
-            }catch(Exception b){
-                System.out.println(b.getMessage());
-                System.out.println("Error de sistema, intentelo nuevamente.");
-                sc.nextLine();
-            }
-        }while(validador);
-        return num;
-    }
-
 
 
 
