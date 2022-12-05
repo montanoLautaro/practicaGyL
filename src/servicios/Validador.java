@@ -13,6 +13,7 @@ public class Validador {
         do{
 
             try{
+
                 num = sc.nextInt();
                 if(num > 0){
                     validador = false;
@@ -67,7 +68,7 @@ public class Validador {
             for (int i=0; i<cadena.length(); i++){
                 caracter = cadena.charAt(i);
                 valorASCII = caracter;
-                if(valorASCII < 97 || valorASCII > 122){
+                if(valorASCII < 97 || valorASCII > 122 ){
                     contador++;
                 }
             }

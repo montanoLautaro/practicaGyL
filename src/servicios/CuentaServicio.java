@@ -5,6 +5,7 @@ import entidades.Usuario;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class CuentaServicio {
 
@@ -82,8 +83,7 @@ public class CuentaServicio {
         do{
             numeroNuevo = crearNumeroTarjeta();
             validador = false;
-            for (Usuario user:
-                    usuarios) {
+            for (Usuario user: usuarios) {
                 if (user.getCuenta().getNumeroTarjeta().equals(numeroNuevo)){
                     validador = true;
                     break;
@@ -108,4 +108,39 @@ public class CuentaServicio {
         System.out.println("Dinero disponible: $" + user.getCuenta().getSaldo());
         System.out.println("");
     }
+
+    public void enviarDinero(ArrayList<Usuario> usuarios, Usuario user){
+        System.out.println("-- ENVIAR DINERO");
+        String usuarioDestino = validarNombreUsuario();
+        realizarTransferencia(encontrarUsuario(usuarios, usuarioDestino));
+
+    }
+
+    public Usuario encontrarUsuario(ArrayList<Usuario> usuarios, String nombre){
+        for (Usuario aux: usuarios) {
+            if(aux.getNombre().equalsIgnoreCase(nombre)){
+                return  aux;
+            }
+        }
+        return null;
+    }
+
+    public String validarNombreUsuario(){
+        String nombre;
+        Scanner sc = new Scanner(System.in).useDelimiter("\n");
+        boolean validador;
+        System.out.println("Ingrese el nombre del usuario al cual le quiere enviar dinero: ");
+        do{
+            nombre = sc.next();
+            validador = Validador.validarIngresoSoloLetras(nombre);
+        }while(validador);
+        return nombre;
+    }
+
+    public void realizarTransferencia(Usuario userBase, Usuario userDestino ){
+
+    }
+
+
+
 }

@@ -37,11 +37,12 @@ public class PrincipalServicio {
                     System.out.println("La opción ingresada no es válida, intentelo nuevamente");
             }
         }while(opcion != 3);
+
     }
 
 
     public void inicializarUsuarios(){
-        usuarios.add(new Usuario("Juan", "Pere", 19, "falsa 123", "1133443311", "corre@prueba.com", new Cuenta(1439,
+        usuarios.add(new Usuario("Juan", "Pere", 19, "falsa 123", "1133443311", "correo@prueba.com", new Cuenta(1439,
                 130, "1234567891012345")));
         usuarios.add(new Usuario("Logi", "Tech", 33, "lab 3", "1133221144", "qwerty@prueba.com", new Cuenta(1321,
                 100, "9876543211012345")));
