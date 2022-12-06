@@ -50,6 +50,7 @@ public class UsuarioServicio {
                 System.out.println("Se alcanzó el máximo de usuarios permitido.");
             }
         }
+
     }
 
     public String ingresarNombre(){
@@ -103,7 +104,7 @@ public class UsuarioServicio {
                 System.out.println("Ingreso mal la contraseña, le quedan " + intentos + " intentos.");
             }
             intentos--;
-        }while(intentos > 0);
+        }while(intentos > 0 && resultado == false);
 
         if(!resultado){
             System.out.println("Se quedó sin intentos, volviendo al menú principal.");

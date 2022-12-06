@@ -11,11 +11,8 @@
 
 package main;
 
-import entidades.Usuario;
 import servicios.PrincipalServicio;
 
-import java.util.ArrayList;
-import java.util.Random;
 
 public class main {
     public static void main(String[] args) {
