@@ -8,14 +8,17 @@
  * menu para transaccion de usuario 1 a usuario 2
  * tarjeta con unico numero
  */
+
 package main;
+
+import servicios.PrincipalServicio;
+
 
 public class main {
     public static void main(String[] args) {
 
-
+        PrincipalServicio sv = new PrincipalServicio();
+        sv.menu();
 
     }
 
-
-}

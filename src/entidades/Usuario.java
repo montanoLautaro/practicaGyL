@@ -19,16 +19,20 @@ public class Usuario {
     private String telefono;
     private String correo;
 
+    private Cuenta cuenta;
+
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellido, int edad, String direccion, String telefono, String correo) {
+
+    public Usuario(String nombre, String apellido, int edad, String direccion, String telefono, String correo, Cuenta cuenta) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.direccion = direccion;
         this.telefono = telefono;
         this.correo = correo;
+        this.cuenta = cuenta;
     }
 
     public String getNombre() {
@@ -77,5 +81,19 @@ public class Usuario {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
+    }
+
+    @Override
+    public String toString() {
+        return   "|" + nombre + "\t\t\t\t" + "\t\t\t" + apellido + "\t\t\t" + edad +
+                "\t\t\t" + direccion + "\t\t\t\t\t\t\t\t" + telefono + "\t\t\t\t" + correo + "\t\t" ;
     }
 }

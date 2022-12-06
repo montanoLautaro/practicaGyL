@@ -13,39 +13,41 @@
 package entidades;
 
 public class Cuenta {
-    private Usuario titular;
-    private String contrasenia;
+    private int contrasenia;
     private double saldo;
+    private String numeroTarjeta;
+
+
 
     public Cuenta() {
         saldo = 0;
     }
 
-    public Cuenta(Usuario titular, String contrasenia) {
-        this.titular = titular;
+    public Cuenta(int contrasenia, String numeroTarjeta) {
+        this.numeroTarjeta = numeroTarjeta;
         this.contrasenia = contrasenia;
         saldo = 0;
     }
 
-    public Cuenta(Usuario titular, String contrasenia, double saldo) {
-        this.titular = titular;
+    public Cuenta(int contrasenia, double saldo, String numeroTarjeta) {
         this.contrasenia = contrasenia;
         this.saldo = saldo;
+        this.numeroTarjeta = numeroTarjeta;
     }
 
-    public Usuario getTitular() {
-        return titular;
+    public String getNumeroTarjeta() {
+        return numeroTarjeta;
     }
 
-    public void setTitular(Usuario titular) {
-        this.titular = titular;
+    public void setNumeroTarjeta(String numeroTarjeta) {
+        this.numeroTarjeta = numeroTarjeta;
     }
 
-    public String getContrasenia() {
+    public int getContrasenia() {
         return contrasenia;
     }
 
-    public void setContrasenia(String contrasenia) {
+    public void setContrasenia(int contrasenia) {
         this.contrasenia = contrasenia;
     }
 
