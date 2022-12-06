@@ -27,7 +27,7 @@ public class CuentaServicio {
                     mostrarDatosCuenta(user);
                     break;
                 case 3:
-
+                    enviarDinero(usuarios, user);
                     break;
                 case 4:
                     System.out.println("VOLVIENDO AL MENÚ PRINCIPAL...");
@@ -112,8 +112,14 @@ public class CuentaServicio {
     public void enviarDinero(ArrayList<Usuario> usuarios, Usuario user){
         System.out.println("-- ENVIAR DINERO");
         String usuarioDestino = validarNombreUsuario();
-        realizarTransferencia(encontrarUsuario(usuarios, usuarioDestino));
-
+        Usuario aux = encontrarUsuario(usuarios, usuarioDestino);
+        if(aux != null){
+            realizarTransferencia(user, aux);
+            System.out.println("Operación realizada con exito");
+        }else{
+            System.out.println("El usuario que ingresó, no existe.");
+        }
+        System.out.println("Volviendo al menú de usuario...");
     }
 
     public Usuario encontrarUsuario(ArrayList<Usuario> usuarios, String nombre){
@@ -138,9 +144,29 @@ public class CuentaServicio {
     }
 
     public void realizarTransferencia(Usuario userBase, Usuario userDestino ){
-
+        boolean resultado = true;
+        System.out.println("Ingrese la cantidad de dinero que quiere enviar: ");
+        double dinero;
+        do{
+            dinero= Validador.validarIngresoDoublePositivo();
+            if(dinero <= userBase.getCuenta().getSaldo()){
+                System.out.println("Enviando dinero a la cuenta destino...");
+                restarSaldo(userBase, dinero);
+                sumarSaldo(userDestino, dinero);
+                resultado = false;
+            }else {
+                System.out.println("El monto ingresado es superior al monto disponible, ingrese otro monto:");
+            }
+        }while(resultado);
     }
 
-
+    public void restarSaldo(Usuario user, double monto){
+        double nuevoSaldo = user.getCuenta().getSaldo() - monto;
+        user.getCuenta().setSaldo(nuevoSaldo);
+    }
+    public void sumarSaldo(Usuario user, double monto){
+        double nuevoSaldo = user.getCuenta().getSaldo() + monto;
+        user.getCuenta().setSaldo(nuevoSaldo);
+    }
 
 }
